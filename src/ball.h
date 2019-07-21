@@ -10,7 +10,7 @@ public:
     float speed = 0, heading = 0;
     int num_bounces = 0;
     vec3 hitPos;
-    bool died = false, isReset = false;;//has the ball died or not
+    bool died = false, isReset = false;//has the ball died or not
     int num_points_played = 0;
     int num_hits = 0;
     int num_good_hits = 0;
@@ -21,7 +21,7 @@ public:
     vec3 initPos_p1{ c_w / 2, c_h, 1 }, initPos_p2{ c_w / 2, 0, 1 };
     void reset();
     void reset_rand();
-    void updateFrames();
+    void updateFrames(float m);
     void update(court* c, float dt = 60);
     void output_data(/*player* p1, player* p2*/);
     void dead(bool flipWinner = false);

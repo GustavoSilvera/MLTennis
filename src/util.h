@@ -43,7 +43,7 @@ static int mult = 1;
 static float w_x, w_y;
 static const double ppm = 30;
 static const float c_w = 10.973, c_h = 23.77;
-static vec2 refPt(int identity) {//reference point for the diagonal end of OPPOSITE side for individual players
+static dvec2 refPt(int identity) {//reference point for the diagonal end of OPPOSITE side for individual players
     if (identity == 1) return vec2{ 0, 0 };
     return vec2{ c_w, c_h };
 }
@@ -54,7 +54,6 @@ static vec2 refPt2(int identity) {//reference point for the diagonal end of OPPO
 #define altSign sgn(refPt(identity).y - 1)//alternating sign for diff identities
 //Font mFont;//custom font for optimized drawing
 //gl::TextureFontRef mTextureFont;//custom opengl::texture
-
 /*
 class Vec2d {//3d vector used for everything
 public:

@@ -20,8 +20,8 @@ void ball::reset_rand() {
     speed = 0;
     isDead_frames = dead_frames_max + 1;//do nothing
 }
-void ball::updateFrames() {
-    dead_frames_max = 100 / mult;
+void ball::updateFrames(float m) {
+    dead_frames_max = 100.0 / m;
     isDead_frames = dead_frames_max;
 }
 void ball::update(court* c, float dt) {
@@ -33,7 +33,7 @@ void ball::update(court* c, float dt) {
             pos.y > c->mid_c_h && (pos.y + (vel.y / dt)) < c->mid_c_h) {	//pos y switches from being greater than net to less than net
         net(c); //checks net conditions
     }
-    if (isDead_frames == dead_frames_max) {
+    if (isDead_frames <= dead_frames_max && isDead_frames + 1 > dead_frames_max) {//if animation frames equal
         reset();
         //reset_rand();
     }

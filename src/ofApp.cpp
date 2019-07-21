@@ -11,7 +11,7 @@ void ofApp::setup(){
     //mFont = Font("Arial", ppm);//fixed custom font
     //mTextureFont = gl::TextureFont::create(mFont);
     renderFont();
-    corner_fps.x = ofGetWidth() - 3 * ppm;
+    corner_fps.x = ofGetWidth() - 8 * ppm;
     corner_fps.y = 0 + 2 * ppm;
     drawScore(&b);//updates score when ball dies
 }
@@ -36,13 +36,13 @@ void ofApp::drawScore(ball* b){
     for (int i = 0; i < 3; i++) {//player 2
         vec2 pos = ppm * vec2{ c_w + hor_shift, i * ver_shift };
         drawFontText(titles[i], pos);
-        pos.x += 3 * ppm;//space btwn title & value
+        pos.x += 5 * ppm;//space btwn title & value
         drawFontText(values_p2[i], pos);
     }
     for (int i = 0; i < 3; i++) {//player 1
         vec2 pos = ppm * vec2{ c_w + hor_shift, c_h - (2 - i) * ver_shift };
         drawFontText(titles[i], pos);
-        pos.x += 3 * ppm;//space btwn title & value
+        pos.x += 5 * ppm;//space btwn title & value
         drawFontText(values_p1[i], pos);
     }
 }
@@ -63,7 +63,7 @@ void ofApp::draw(){
     ofSetColor(0, 255, 0);
     //draw black rectangle behind FPS to prevent overdraw
     drawFontText(ofGetFrameRate(), corner_fps);
-    ofSetColor(1, 1, 1);
+    ofSetColor(255, 255, 255);
     drawFontText(mult, vec2(corner_fps.x, corner_fps.y + 2 * ppm));
     drawFontText(b.num_hits, vec2(corner_fps.x, corner_fps.y + 3 * ppm));
     drawFontText(b.num_good_hits, vec2(corner_fps.x, corner_fps.y + 4 * ppm));
@@ -75,12 +75,12 @@ void ofApp::keyPressed(int key){
     if (key == OF_KEY_UP) {//begins the training
         mult *= 10;
         c.updateFrames();
-        b.updateFrames();
+        b.updateFrames(mult);
     }
     if (key == OF_KEY_DOWN && mult >= 10) {
         mult /= 10;
         c.updateFrames();
-        b.updateFrames();
+        b.updateFrames(mult);
     }
 }
 

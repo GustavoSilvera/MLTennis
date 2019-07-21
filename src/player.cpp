@@ -1,8 +1,8 @@
 #include "player.h"
 
 bool player::withinRange(ball* b) {//if b->pos is within 1m of pos
-    //return(pythag(b->pos.x - pos.x, b->pos.y - pos.y) < 1);//no sqrt optimization
-    return(pythag2(b->pos.x - pos.x, b->pos.y - pos.y, b->pos.z - pos.z) < 1);//w/ sqrt opt
+    //return(pythag(b->pos.x - pos.x, b->pos.y - pos.y) < 1.6);//no sqrt optimization
+    return(pythag2(b->pos.x - pos.x, b->pos.y - pos.y, b->pos.z - pos.z) < sqr(1.3));//w/ sqrt opt
 }
 void player::hit(ball* b, float initV, float aim) {
     aim = toRad(aim);//converts to radians
@@ -92,8 +92,9 @@ void player::update(ball* b, court* c, player* o, ConvNeuralNet* cnn, float dt) 
         if (identity != 1) {//player 2 hit
             dir *= -1;
         }
-        std::vector<double> v = add_rand(cnn->compute(add_rand(p, 1.5, 2)), 1, 2);//MACHINE LEARNIN'''''
-        vec3 net_vel = { -(float)v[0], -dir*(float)1.5*((float)v[1]), ((float)v[2] + 1) };//so very very wrong
+        std::vector<double> hit_pos = add_rand(p, 1.5, 2);//add randomness range of 1.5m
+        std::vector<double> v = add_rand(cnn->compute(hit_pos), 1.5, 2);//MACHINE LEARNIN'''''
+        vec3 net_vel = { dir*v[0], -dir*1.5*v[1], v[2] + 1 };//issok
 
         hit(b, net_vel);
         b->lastHit = identity;//updates lastHit identity
