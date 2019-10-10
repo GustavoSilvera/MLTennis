@@ -1,5 +1,5 @@
 Virtualized graphical simulation of a classic tennis match with Machine Learning
 
-                  1x speed             |            10x speed                  |             100x speed
-            ![](images/1x.gif)         |       ![](images/10x.gif)             |       ![](images/100x.gif)
-
+|               Preview             |  Description |
+:-------------------------:|:-------------------------:
+![](images/10x.gif)  |  **Requires** OpenFrameworks v0.10.1 (openframeworks.cc/download/) **Install** Once you install OpenFrameworks for you system, polace it in the home directory with name OF/ and run *make* in terminal. **CONTROLS** Up/Down arrows control the relative speeds of the update in the simulation, these increment by 10x so it is easy to overburden the computer. Be Careful! During every match the tennis players will output a text file in /bin called DATA.txt that will contain coordinates for the x,y,and z velocity components of the player and the corresponding position of the ball when it first lands. This will be the basis for the dataset used in my Convolutional Neural Network project and will allow these players to learn over time and improve their shot accuracy for the longer they play. Thus a higher update speed is ideal.  |
