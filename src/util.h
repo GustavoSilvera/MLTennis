@@ -1,7 +1,7 @@
 #ifndef UTIL_H
 #define UTIL_H
 #include <math.h>
-#include "ofMain.h"//main OF include for everything... placed here bc everything includes util...
+#include "/home/gustavo/OF/libs/openFrameworks/ofMain.h"//main OF include for everything... placed here bc everything includes util...
 static ofTrueTypeFont font;
 
 using namespace glm;
