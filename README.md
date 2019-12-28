@@ -7,8 +7,8 @@ Virtualized graphical simulation of a classic tennis match with Machine Learning
 
 # **Requires** 
     OpenFrameworks v0.10.1 (openframeworks.cc/download/) 
-# **Install** 
-    Once you install OpenFrameworks for you system, polace it in the home directory with name OF/ and run *make* in terminal.
+# **Compile** 
+    Once you install OpenFrameworks for you system, place it in your home directory, use make to compile it
 # **Controls** 
     Up/Down arrows control the relative speeds of the update in the simulation
     These increment by 10x so it is easy to overburden the computer. Be Careful!
